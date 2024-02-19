@@ -1,95 +1,132 @@
-import Image from "next/image";
 import styles from "./page.module.css";
-
+import Head from "next/head";
+import Script from "next/script";
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+    <>
+      <Head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Brush paint</title>
+        <link rel="icon" type="image/png" href="ed-dev-favicon.png" />
+        {/*  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        /> */}
+      </Head>
+      {/* Tool Bar */}
+      <div className={styles.topBar}>
+        {/* Active Tool */}
+        <div className={styles.activeTool}>
+          <span id="active-tool" title="Active Tool">
+            Brush
+          </span>
+        </div>
+        {/* Brush */}
+        <div className={styles.brush}>
+          <i
+            className={`fas fa-brush ${styles.icon}`}
+            id="brush"
+            title="Brush"
+          />
+          <input
+            // defaultValue={0o0}
+            value="000000"
+            data-jscolor="{
+      preset: 'dark',
+      closeButton: true,
+      closeText: 'OK'
+      }"
+            className={styles.jscolor}
+            id="brush-color"
+          />
+          <span className={styles.size} id="brush-size" title="Brush Size">
+            10
+          </span>
+          <input
+            type="range"
+            min={1}
+            max={50}
+            defaultValue={10}
+            className={styles.slider}
+            id="brush-slider"
+          />
+        </div>
+        {/* Bucket */}
+        <div className={styles.bucketTool}>
+          <i
+            className={`fas fa-fill-drip ${styles.icon}`}
+            title="Background Color"
+          />
+          <input
+            defaultValue="ffffff"
+            data-jscolor="{
+    preset: 'dark',
+    closeButton: true,
+    closeText: 'OK'
+    }"
+            className={styles.jscolor}
+            id="bucket-color"
+          />
+        </div>
+        {/* Eraser */}
+        <div className={styles.tool}>
+          <i
+            className={`fas fa-eraser ${styles.icon}`}
+            id="eraser"
+            title="Eraser"
+          />
+        </div>
+        {/* Clear Canvas */}
+        <div className={styles.tool}>
+          <i
+            className={`fas fa-undo-alt ${styles.icon}`}
+            id="clear-canvas"
+            title="Clear"
+          />
+        </div>
+        {/* Save Local Storage */}
+        <div className={styles.tool}>
+          <i
+            className={`fas fa-download ${styles.icon}`}
+            id="save-storage"
+            title="Save Local Storage"
+          />
+        </div>
+        {/* Load Local Storage */}
+        <div className={styles.tool}>
+          <i
+            className={`fas fa-upload ${styles.icon}`}
+            // className={styles["fas"] + " " + styles["fa-upload"]}
+            id="load-storage"
+            title="Load Local Storage"
+          />
+        </div>
+        {/* Clear Local Storage */}
+        <div className={styles.tool}>
+          <i
+            // className="fas fa-trash-alt"
+            className={`fas fa-trash-alt ${styles.icon}`}
+            id="clear-storage"
+            title="Clear Local Storage"
+          />
+        </div>
+        {/* Download Image */}
+        <div className={styles.tool}>
+          <a id="download">
+            <i
+              className={`far fa-save ${styles.icon}`}
+              title="Save Image File"
             />
           </a>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      {/* Message for mobile */}
+      {/* <div className="mobileMessage">
+        <h2>Please use the app on a larger screen</h2>{" "}
+      </div> */}
+      {/* <Script src="/js/jscolor.js"></Script>
+      <Script src="/js/script.js"></Script> */}
+    </>
   );
 }
