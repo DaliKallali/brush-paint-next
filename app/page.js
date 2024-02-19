@@ -31,7 +31,7 @@ export default function Home() {
           />
           <input
             // defaultValue={0o0}
-            value="000000"
+            defalutValue="000000"
             data-jscolor="{
       preset: 'dark',
       closeButton: true,
