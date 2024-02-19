@@ -16,4 +16,4 @@ pnpm dev
 bun dev
 ```
 Open [http://localhost:3000] with your browser to see the result.
-The application was converted successfully.Simple changes were made to the css for a better look.Thank you!
+The application was converted to next.js successfully.Simple changes were made to the css for a better look.Thank you!
